@@ -40,4 +40,6 @@ items:
   - "Linux"
   - "Git"
   - "Python"
+  - "Power Bi"
+  - "Excel"
 ---

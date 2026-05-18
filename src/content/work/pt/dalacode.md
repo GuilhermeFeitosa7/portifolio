@@ -13,10 +13,13 @@ highlights:
   - "Participacao ativa na manutencao da aplicacao web PHP, incluindo resolucao de problemas e otimizacao de desempenho."
   - "Customizacao de funcionalidades PHP de acordo com requisitos especificos do projeto."
   - "Integracao de APIs e servicos externos para melhorar a funcionalidade e a experiencia do usuario."
+  - "Uso de Excel e Power BI para organizar dados e apoiar analises de negocio."
   - "Utilizacao de sistemas de controle de versao para coordenar alteracoes e colaborar com a equipe de desenvolvimento."
 tools:
   - "SQL"
   - "Vue.js"
   - "PHP"
   - "MySQL"
+  - "Excel"
+  - "Power BI"
 ---

@@ -13,10 +13,13 @@ highlights:
   - "Actively maintained the PHP web application, including issue resolution and performance optimization."
   - "Customized PHP functionalities according to specific project requirements."
   - "Integrated external APIs and services to improve product functionality and user experience."
+  - "Worked with Excel and Power BI to organize data and support business analysis."
   - "Used version control systems to coordinate changes and collaborate effectively with the development team."
 tools:
   - "SQL"
   - "Vue.js"
   - "PHP"
   - "MySQL"
+  - "Excel"
+  - "Power BI"
 ---
