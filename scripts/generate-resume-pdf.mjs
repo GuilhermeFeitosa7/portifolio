@@ -24,7 +24,8 @@ const pdfVariants = [
   {
     id: "en",
     templatePath: resumeTemplatePath,
-    outputPdfPath: path.join(root, "public/luna-peregrina-cv-en.pdf"),
+    // Atualizado para o seu nome de preferência
+    outputPdfPath: path.join(root, "public/Guilherme-Feitosa-cv-en.pdf"),
     dateLocale: "en-US",
     presentLabel: "Present",
     sections: {
@@ -37,7 +38,8 @@ const pdfVariants = [
   {
     id: "pt",
     templatePath: curriculoTemplatePath,
-    outputPdfPath: path.join(root, "public/luna-peregrina-cv-pt.pdf"),
+    // Atualizado para o seu nome de preferência
+    outputPdfPath: path.join(root, "public/Guilherme-Feitosa-cv-pt.pdf"),
     dateLocale: "pt-BR",
     presentLabel: "Atual",
     sections: {
@@ -56,9 +58,24 @@ const defaultCvSections = {
   education: true,
 };
 
+// Nova validação inteligente compatível com Windows, Mac e Linux
 function hasCommand(command) {
-  const result = spawnSync("sh", ["-c", `command -v ${command}`], { stdio: "pipe" });
-  return result.status === 0;
+  const isWindows = process.platform === "win32";
+  
+  // Se o executável estiver na própria raiz do projeto, valida direto
+  if (existsSync(path.join(root, command)) || existsSync(path.join(root, `${command}.exe`))) {
+    return true;
+  }
+
+  if (isWindows) {
+    // No Windows, usa o 'where' para buscar no PATH do sistema
+    const result = spawnSync("where", [command], { stdio: "pipe" });
+    return result.status === 0;
+  } else {
+    // No Linux/Mac, mantém o fallback elegante
+    const result = spawnSync("sh", ["-c", `command -v ${command}`], { stdio: "pipe" });
+    return result.status === 0;
+  }
 }
 
 function parseScalar(raw) {
@@ -70,15 +87,16 @@ function parseScalar(raw) {
 }
 
 function parseFrontmatter(fileContent) {
-  const match = fileContent.match(/^---\n([\s\S]*?)\n---/);
+  const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return {};
 
-  const lines = match[1].split("\n");
+  const lines = match[1].split(/\r?\n/);
   const data = {};
   let currentArrayKey = null;
 
   for (const line of lines) {
     if (!line.trim()) continue;
+    
     const arrMatch = line.match(/^\s*-\s+(.*)$/);
     if (arrMatch && currentArrayKey) {
       if (!Array.isArray(data[currentArrayKey])) data[currentArrayKey] = [];
@@ -102,6 +120,7 @@ function parseFrontmatter(fileContent) {
 
   return data;
 }
+
 
 function readCollection(dir) {
   if (!existsSync(dir)) return [];
@@ -444,13 +463,18 @@ ${renderedSections}
 }
 
 function compileLatex(compiler, outDir, texPath) {
+  // Ajustado para garantir caminhos relativos locais caso o executável esteja na raiz do projeto
+  const isWindows = process.platform === "win32";
+  const tectonicCmd = existsSync(path.join(root, "tectonic.exe")) ? path.join(root, "tectonic.exe") : "tectonic";
+  const pdflatexCmd = existsSync(path.join(root, "pdflatex.exe")) ? path.join(root, "pdflatex.exe") : "pdflatex";
+
   return compiler === "pdflatex"
     ? spawnSync(
-      "pdflatex",
-      ["-interaction=nonstopmode", "-halt-on-error", "-output-directory", outDir, texPath],
-      { stdio: "pipe", encoding: "utf8" },
-    )
-    : spawnSync("tectonic", ["--outdir", outDir, texPath], { stdio: "pipe", encoding: "utf8" });
+        pdflatexCmd,
+        ["-interaction=nonstopmode", "-halt-on-error", "-output-directory", outDir, texPath],
+        { stdio: "pipe", encoding: "utf8" },
+      )
+    : spawnSync(tectonicCmd, ["--outdir", outDir, texPath], { stdio: "pipe", encoding: "utf8" });
 }
 
 function generateVariantPdf(variant, compiler, strict) {

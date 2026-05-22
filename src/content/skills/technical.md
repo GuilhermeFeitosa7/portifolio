@@ -1,15 +1,8 @@
 ---
-category: "Technical"
+category: "Technical Skills"
 items:
-  - "TypeScript"
-  - "React"
-  - "Astro"
-  - "Node"
-  - "REST APIs"
-  - "Docker"
-  - "CI/CD"
-  - "Linux"
-  - "Git"
-  - "Python"
-  - "Excel"
+  - "DevOps & Containers: Red Hat OpenShift, Docker, Podman"
+  - "CI/CD & Automation: Jenkins, Git, PowerShell, Bash"
+  - "SysAdmin & Networks: Windows Server, Active Directory, Networking (DNS, DHCP)"
+  - "Development: Node.js, React, Algorithms & Data Structures"
 ---

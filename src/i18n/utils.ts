@@ -80,6 +80,6 @@ export function getSwitchLocalePath(url: URL, locale: Locale): string {
 
 export function getResumePath(locale: Locale): string {
   return locale === "pt"
-    ? "/luna-peregrina-cv-pt.pdf"
-    : "/luna-peregrina-cv-en.pdf";
+    ? "/Guilherme-Feitosa-cv-pt.pdf"
+    : "/Guilherme-Feitosa-cv-en.pdf";
 }
