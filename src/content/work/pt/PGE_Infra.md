@@ -1,9 +1,9 @@
 ---
 company: "Procuradoria Geral do Estado do Rio de Janeiro"
-role: "Infrastructure Intern"
+role: "Estágio Infraestrura"
 location: "Remoto"
-dateStart: "2025-06-02"
-dateEnd: "2025-05-06"
+dateStart: "2026-06-02"
+dateEnd: "2026-05-06"
 type: "Estágio"
 highlights:
   - "Sustentação e monitoramento de ambientes de servidores Windows Server críticos."

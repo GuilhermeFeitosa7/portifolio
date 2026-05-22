@@ -1,6 +1,6 @@
 ---
 company: "Procuradoria Geral do Estado do Rio de Janeiro"
-role: "DevOps Intern"
+role: "Estágio DevOps"
 location: "Remoto"
 dateStart: "2026-05-07"
 dateEnd: "Current"

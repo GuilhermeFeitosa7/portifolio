@@ -139,7 +139,10 @@ function readCollection(dir) {
       }
 
       const content = readFileSync(fullPath, "utf8");
-      return [{ file: relativePath, data: parseFrontmatter(content) }];
+      // CORREÇÃO: Força a substituição de barras invertidas do Windows (\) por normais (/)
+      const normalizedPath = relativePath.replace(/\\/g, '/');
+      
+      return [{ file: normalizedPath, data: parseFrontmatter(content) }];
     });
 
   return walk(dir);
