@@ -12,6 +12,6 @@
     "leadership": false,
     "experience": true,
     "skills": true,
-    "education": false
+    "education": true
   }
 }

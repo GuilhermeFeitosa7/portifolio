@@ -1,7 +1,7 @@
 ---
 company: "Procuradoria Geral do Estado do Rio de Janeiro"
 role: "Estágio Infraestrura"
-location: "Remoto"
+location: "Presencial"
 dateStart: "2026-06-02"
 dateEnd: "2026-05-06"
 type: "Estágio"

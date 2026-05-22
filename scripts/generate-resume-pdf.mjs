@@ -405,17 +405,23 @@ function buildDocument(strict, variant) {
     .filter((item) => item.file.startsWith(`${variant.id}/`))
     .map((item) => item.data)
     .sort(compareByStartDateDesc);
-  const educationEntries = readCollection(educationDir)
+ const educationEntries = readCollection(educationDir)
+    .filter((item) => item.file.startsWith(`${variant.id}/`)) // Filtro de idioma adicionado!
     .map((item) => item.data)
     .sort(compareByStartDateDesc);
+
   const leadershipEntries = normalizeLeadershipEntries(
     readCollection(leadershipDir)
+      .filter((item) => item.file.startsWith(`${variant.id}/`)) // Filtro de idioma adicionado!
       .map((item) => item.data)
       .sort(compareByStartDateDesc),
     strict,
   );
+
   const skillsEntries = normalizeSkillsEntries(
-    readCollection(skillsDir).map((item) => item.data),
+    readCollection(skillsDir)
+      .filter((item) => item.file.startsWith(`${variant.id}/`)) // Filtro de idioma adicionado!
+      .map((item) => item.data),
     strict,
   );
 
